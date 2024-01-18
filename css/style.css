@@ -33,4 +33,27 @@ footer {
 #gameboard {
   height: calc(100% - 70px - 50px);
   background-color: #7fffd4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  box-shadow: 0 0 0 1px black;
+  height: 500px;
+  aspect-ratio: 1;
+}
+.box {
+  width: calc(100% / 10);
+  aspect-ratio: 1;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box.clicked {
+  background-color: darkcyan;
 }
