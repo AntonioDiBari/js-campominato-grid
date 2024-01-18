@@ -2,17 +2,21 @@
 
 function generateGrid(container) {
   container.innerHTML = "";
-  for (i = 0; i < 100; i++) {
-    const boxEl = generateBox();
+  for (i = 1; i <= 100; i++) {
+    const boxEl = generateBox(i);
     container.append(boxEl);
   }
 }
 
-function generateBox() {
+function generateBox(i) {
   const box = document.createElement("div");
+  box.innerText = i;
+  box.setAttribute("data-i", i);
   box.classList.add("box");
+
   box.addEventListener("click", function () {
-    box.classList.toggle("clicked");
+    this.classList.toggle("clicked");
+    console.log(this.getAttribute("data-i"));
   });
   return box;
 }
