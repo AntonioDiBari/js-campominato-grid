@@ -1,8 +1,36 @@
-img {
-  max-width: 100%;
+body {
+  height: 100vh;
 }
 
-/* PALETTE */
+header {
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 25px;
+}
+footer {
+  height: 50px;
+  padding: 10px 25px;
+}
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
 
-:root {
+#start {
+  width: 80px;
+  border-radius: 5px;
+}
+
+#difficult {
+  width: 180px;
+  border-radius: 5px;
+}
+
+#gameboard {
+  height: calc(100% - 70px - 50px);
+  background-color: #7fffd4;
 }

@@ -32,9 +32,27 @@
     <script type="text/javascript" src="./js/main.js" defer></script>
   </head>
   <body>
-    <header></header>
-    <section></section>
-    <footer></footer>
+    <header>
+      <div class="logo">
+        <img src="./img/Logo.png" alt="logo" class="d-inline-block" />
+        <h1 class="d-inline-block">Campo Minato</h1>
+      </div>
+      <div class="buttons">
+        <label for="difficult">Difficolt&agrave;:</label>
+        <select id="difficult">
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+        <button type="button" id="start">Play</button>
+      </div>
+    </header>
+    <section id="gameboard"></section>
+    <footer>
+      <p>
+        Mady with <i class="fa-solid fa-heart"></i> by <a href="#">Boolean</a>
+      </p>
+    </footer>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
