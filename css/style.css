@@ -42,13 +42,12 @@ footer {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  box-shadow: 0 0 0 1px black;
-  height: 500px;
+  /* box-shadow: 0 0 0 1px black; */
+  border: 1px solid black;
+  height: 80%;
   aspect-ratio: 1;
 }
 .box {
-  width: calc(100% / 10);
-  aspect-ratio: 1;
   border: 1px solid black;
   display: flex;
   justify-content: center;
@@ -57,4 +56,16 @@ footer {
 }
 .box.clicked {
   background-color: darkcyan;
+}
+.box-10 {
+  width: calc(100% / 10);
+  aspect-ratio: 1;
+}
+.box-9 {
+  width: calc(100% / 9);
+  aspect-ratio: 1;
+}
+.box-7 {
+  width: calc(100% / 7);
+  aspect-ratio: 1;
 }
