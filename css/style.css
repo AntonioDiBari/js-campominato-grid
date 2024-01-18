@@ -30,7 +30,7 @@ footer {
   border-radius: 5px;
 }
 
-#gameboard {
+#gamesection {
   height: calc(100% - 70px - 50px);
   background-color: #7fffd4;
   display: flex;
