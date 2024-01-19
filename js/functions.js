@@ -6,8 +6,21 @@
  */
 function generateGrid(container, level) {
   container.innerHTML = "";
+  const bombArray = [];
+  let min = 1;
+  let max = difficultLvl * difficultLvl;
+  let offset = max - min;
+  if (offset >= 16) {
+    while (bombArray.length < 16) {
+      let bomb = Math.floor(Math.random() * (max - min + 1) + min);
+      if (!bombArray.includes(bomb)) {
+        bombArray.push(bomb);
+      }
+    }
+  }
+  console.table(bombArray);
   for (i = 1; i <= level * level; i++) {
-    const boxEl = generateBox(i, level);
+    const boxEl = generateBox(i, level, bombArray);
     container.append(boxEl);
   }
 }
@@ -17,22 +30,30 @@ function generateGrid(container, level) {
  * @param {*} level livello di difficoltà che indica le dimensioni del box
  * @returns elemento div da inserire nella griglia
  */
-function generateBox(i, level) {
+function generateBox(i, level, bomblist) {
   const box = document.createElement("div");
   box.innerText = i;
   box.setAttribute("data-i", i);
   box.classList.add("box");
   console.log(level);
-  if (level == 10) {
-    box.classList.add("box-10");
-  } else if (level == 9) {
-    box.classList.add("box-9");
-  } else if (level == 7) {
-    box.classList.add("box-7");
-  }
+
+  box.classList.add(`box-${level}`);
+
   box.addEventListener("click", function () {
-    this.classList.toggle("clicked");
-    console.log(this.getAttribute("data-i"));
+    if (!isGameOver) {
+      if (bomblist.includes(parseInt(this.getAttribute("data-i")))) {
+        this.classList.add("error");
+        alert("Hai perso, riprova!! Punteggio: " + points);
+        isGameOver = true;
+      } else {
+        this.classList.add("safe");
+        points += 1;
+        if (points == level * level - 16) {
+          alert("Hai vinto, hai fatto un punteggio di " + points);
+          isGameOver = true;
+        }
+      }
+    }
   });
   return box;
 }

@@ -1,4 +1,4 @@
-## Griglia Campo Minato
+<!-- ## Griglia Campo Minato
 
 nome repo: js-campominato-grid
 
@@ -35,4 +35,19 @@ Aggiungere una select accanto al bottone di generazione, che fornisca una scelta
 
 - creo l'elemento cella che avrà la classe necessaria per essere formattato
 - ascolto il suo click per poter gestire il colore di sfondo
-- stampa in console l'indice di generazione della cella, che equivarrà al numero di cella
+- stampa in console l'indice di generazione della cella, che equivarrà al numero di cella -->
+
+# Consegna Giorno 2
+
+Partiamo da quanto fatto già ieri, quindi lavoriamo nella stessa repo.
+
+**Step 1)** Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe. Attenzione: nella stessa cella può essere posizionata al massimo una bomba, perciò nell’array delle bombe non potranno esserci due numeri uguali.
+
+**Step 2)** In seguito l'utente clicca su una cella: se il numero è presente nella lista dei numeri generati - abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina. Altrimenti la cella cliccata si colora di azzurro e l'utente può continuare a cliccare sulle altre celle.
+
+**Step 3)** La partita termina quando il giocatore clicca su una bomba o quando raggiunge il numero massimo possibile di numeri consentiti (ovvero quando ha rivelato tutte le celle che non sono bombe). Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.
+
+**Bonus 1**
+Quando si clicca su una bomba e finisce la partita, evitare che si possa cliccare su altre celle.
+**Bonus 2**
+Quando si clicca su una bomba e finisce la partita, il software scopre tutte le bombe nascoste.
