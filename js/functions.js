@@ -8,7 +8,7 @@ function generateGrid(container, level) {
   container.innerHTML = "";
   const bombArray = [];
   let min = 1;
-  let max = difficultLvl * difficultLvl;
+  let max = level * level;
   let offset = max - min;
   if (offset >= 16) {
     while (bombArray.length < 16) {
@@ -19,11 +19,13 @@ function generateGrid(container, level) {
     }
   }
   console.table(bombArray);
+  let boxEl = "";
   for (i = 1; i <= level * level; i++) {
-    const boxEl = generateBox(i, level, bombArray);
+    boxEl = generateBox(i, level, bombArray);
     container.append(boxEl);
   }
 }
+
 /**
  * Funzione che genera i box e ne gestisce il click
  * @param {*} i indice del box
@@ -31,17 +33,21 @@ function generateGrid(container, level) {
  * @returns elemento div da inserire nella griglia
  */
 function generateBox(i, level, bomblist) {
-  const box = document.createElement("div");
+  let box = document.createElement("div");
   box.innerText = i;
   box.setAttribute("data-i", i);
   box.classList.add("box");
-  console.log(level);
-
   box.classList.add(`box-${level}`);
 
-  box.addEventListener("click", function () {
+  box.addEventListener("click", function (level) {
     if (!isGameOver) {
       if (bomblist.includes(parseInt(this.getAttribute("data-i")))) {
+        let boxCollection = document.getElementsByClassName("box");
+        for (index = 1; index < boxCollection.length; index++) {
+          if (bomblist.includes(parseInt(boxCollection[index].innerText))) {
+            boxCollection[index].classList.add("error");
+          }
+        }
         this.classList.add("error");
         alert("Hai perso, riprova!! Punteggio: " + points);
         isGameOver = true;

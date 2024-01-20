@@ -5,6 +5,6 @@ let isGameOver = false;
 let points = 0;
 
 startBtn.addEventListener("click", function () {
-  difficultLvl = parseInt(difficultLvlInput.value);
+  let difficultLvl = parseInt(difficultLvlInput.value);
   generateGrid(gameboard, difficultLvl);
 });
