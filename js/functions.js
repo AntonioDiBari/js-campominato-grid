@@ -38,8 +38,7 @@ function generateBox(i, level, bomblist) {
   box.setAttribute("data-i", i);
   box.classList.add("box");
   box.classList.add(`box-${level}`);
-
-  box.addEventListener("click", function (level) {
+  box.addEventListener("click", function () {
     if (!isGameOver) {
       if (bomblist.includes(parseInt(this.getAttribute("data-i")))) {
         let boxCollection = document.getElementsByClassName("box");
@@ -54,9 +53,15 @@ function generateBox(i, level, bomblist) {
       } else {
         this.classList.add("safe");
         points += 1;
-        if (points == level * level - 16) {
+        if (points >= level * level - 16) {
           alert("Hai vinto, hai fatto un punteggio di " + points);
           isGameOver = true;
+          let boxCollection = document.getElementsByClassName("box");
+          for (index = 1; index < boxCollection.length; index++) {
+            if (bomblist.includes(parseInt(boxCollection[index].innerText))) {
+              boxCollection[index].classList.add("error");
+            }
+          }
         }
       }
     }
