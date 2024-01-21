@@ -6,18 +6,7 @@
  */
 function generateGrid(container, level) {
   container.innerHTML = "";
-  const bombArray = [];
-  let min = 1;
-  let max = level * level;
-  let offset = max - min;
-  if (offset >= 16) {
-    while (bombArray.length < 16) {
-      let bomb = Math.floor(Math.random() * (max - min + 1) + min);
-      if (!bombArray.includes(bomb)) {
-        bombArray.push(bomb);
-      }
-    }
-  }
+  const bombArray = bombArrayGen(level);
   console.table(bombArray);
   let boxEl = "";
   for (i = 1; i <= level * level; i++) {
@@ -47,7 +36,6 @@ function generateBox(i, level, bomblist) {
             boxCollection[index].classList.add("error");
           }
         }
-        this.classList.add("error");
         alert("Hai perso, riprova!! Punteggio: " + points);
         isGameOver = true;
       } else {
@@ -67,4 +55,26 @@ function generateBox(i, level, bomblist) {
     }
   });
   return box;
+}
+
+/**
+ * Crea l'array delle bombe "uniche" casualmente, controllando che non si generi loop infinito per problemi con l'offset
+ * @param {number} level livello di difficoltà selezionato
+ * @returns array di bombe
+ */
+function bombArrayGen(level) {
+  const bombArray = [];
+  let min = 1;
+  let max = level * level;
+  let offset = max - min;
+  if (offset >= 16) {
+    while (bombArray.length < 16) {
+      let bomb = Math.floor(Math.random() * (max - min + 1) + min);
+      if (!bombArray.includes(bomb)) {
+        bombArray.push(bomb);
+      }
+    }
+  }
+  // console.table(bombArray);
+  return bombArray;
 }
